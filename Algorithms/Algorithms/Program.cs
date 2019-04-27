@@ -33,9 +33,23 @@ namespace Algorithms
 
             Path path = new Path(G, source);
 
+            ConnectedComponents cc = new ConnectedComponents(G);
+
+            Console.Write("Number of components - ");
+            Console.WriteLine(cc.GetNumberOfComponents());
+
+;            for(int i=0;i<vertices;++i)
+            {
+                Console.Write(i);
+                Console.Write("-");
+                Console.WriteLine(cc.GetId(i));
+            }
+            /*
             for (int i = 0; i < vertices; ++i)
             {
-                foreach (var currnode in path.GetPathTo(i))
+                Console.Write(path.GetMinimumPathLength(i));
+                Console.Write(" ");
+                foreach (var currnode in path.GetShortestLengthPathTo(i))
                 {
                     Console.Write(currnode);
                     if (currnode != i)
@@ -43,6 +57,7 @@ namespace Algorithms
                 }
                 Console.WriteLine();
             }
+            */
         }
     }
 }
