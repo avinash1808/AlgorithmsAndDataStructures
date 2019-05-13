@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructures
+namespace AlgoAndDS
 {
     class Program
     {
@@ -50,11 +50,8 @@ namespace DataStructures
                 arr[index++] = Convert.ToInt32(str);
             }
 
-            p.heapsort(arr);
-            p.printarray(arr);
-            Console.ReadKey();
-
-
+            Algorithms.Sorting.SelectionSort.Sort(arr);
+            Algorithms.Sorting.Helper.PrintArray(arr);
             Console.ReadKey();
         }
     }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DataStructures
+namespace AlgoAndDS
 {
     public class Graph
     {

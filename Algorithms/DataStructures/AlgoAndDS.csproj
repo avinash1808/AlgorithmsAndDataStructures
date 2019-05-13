@@ -42,11 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Graph.cs" />
-    <Compile Include="Heap.cs" />
+    <Compile Include="Algorithms\Graph\ConnectedComponents.cs" />
+    <Compile Include="Algorithms\Graph\Path.cs" />
+    <Compile Include="Algorithms\Sorting\BubbleSort.cs" />
+    <Compile Include="Algorithms\Sorting\HeapSort.cs" />
+    <Compile Include="Algorithms\Helper.cs" />
+    <Compile Include="Algorithms\Sorting\InsertionSort.cs" />
+    <Compile Include="Algorithms\Sorting\MergeSort.cs" />
+    <Compile Include="Algorithms\Sorting\QuickSort.cs" />
+    <Compile Include="Algorithms\Sorting\SelectionSort.cs" />
+    <Compile Include="DataStructures\Graph.cs" />
+    <Compile Include="DataStructures\Heap.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnionFind.cs" />
+    <Compile Include="DataStructures\UnionFind.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

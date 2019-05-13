@@ -2,9 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms", "Algorithms\Algorithms.csproj", "{D5B0200A-4059-48CD-9666-2468945AFD19}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures", "DataStructures\DataStructures.csproj", "{DBC12D1C-D2F9-48AE-B64B-916E429C78A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoAndDS", "DataStructures\AlgoAndDS.csproj", "{DBC12D1C-D2F9-48AE-B64B-916E429C78A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,12 +12,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D5B0200A-4059-48CD-9666-2468945AFD19}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{D5B0200A-4059-48CD-9666-2468945AFD19}.Debug|x86.ActiveCfg = Debug|x86
-		{D5B0200A-4059-48CD-9666-2468945AFD19}.Debug|x86.Build.0 = Debug|x86
-		{D5B0200A-4059-48CD-9666-2468945AFD19}.Release|Any CPU.ActiveCfg = Release|x86
-		{D5B0200A-4059-48CD-9666-2468945AFD19}.Release|x86.ActiveCfg = Release|x86
-		{D5B0200A-4059-48CD-9666-2468945AFD19}.Release|x86.Build.0 = Release|x86
 		{DBC12D1C-D2F9-48AE-B64B-916E429C78A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DBC12D1C-D2F9-48AE-B64B-916E429C78A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBC12D1C-D2F9-48AE-B64B-916E429C78A4}.Debug|x86.ActiveCfg = Debug|Any CPU
