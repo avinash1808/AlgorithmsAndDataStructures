@@ -25,7 +25,6 @@ namespace Algorithms
             {
                 this.visited.Add(i, false);
             }
-
             for (int i=0;i<G.GetVertices();++i)
             {
                 if(!visited[i])
