@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AlgoAndDS.Algorithms.Common;
-using AlgoAndDS.Algorithms.Sorting;
+using AlgoAndDS.DataStructures;
+
 
 namespace AlgoAndDS
 {
@@ -41,19 +42,38 @@ namespace AlgoAndDS
             //    Console.WriteLine(uf.Connected(p, q));
             //}
 
-            string input = Console.ReadLine();
-            var splitinput = input.Split(' ');
-            int[] arr = new int[splitinput.Length];
-            int index = 0;
-            Program p = new Program();
+            //string input = Console.ReadLine();
+            //var splitinput = input.Split(' ');
+            //int[] arr = new int[splitinput.Length];
+            //int index = 0;
+            //Program p = new Program();
 
-            foreach (var str in splitinput)
-            {
-                arr[index++] = Convert.ToInt32(str);
-            }
+            //foreach (var str in splitinput)
+            //{
+            //    arr[index++] = Convert.ToInt32(str);
+            //}
 
-            SelectionSort.Sort(arr);
-            Helper.PrintArray(arr);
+            //SelectionSort.Sort(arr);
+            //Helper.PrintArray(arr);
+            //Console.ReadKey();
+
+            BinarySearchTree theTree = new BinarySearchTree();
+            theTree.Put(20, 1);
+            theTree.Put(25, 1);
+            theTree.Put(45, 1);
+            theTree.Put(15, 1);
+            theTree.Put(67, 1);
+            theTree.Put(43, 1);
+            theTree.Put(80, 1);
+            theTree.Put(33, 1);
+            theTree.Put(67, 1);
+            theTree.Put(99, 1);
+            theTree.Put(91, 1);
+            Console.WriteLine("Inorder Traversal : ");
+            theTree.InOrder(theTree.GetRoot());
+            Console.WriteLine(" ");
+            theTree.NodesInRange(15,35);
+            Console.WriteLine();
             Console.ReadKey();
         }
     }

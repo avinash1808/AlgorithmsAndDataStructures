@@ -51,6 +51,8 @@
     <Compile Include="Algorithms\Sorting\MergeSort.cs" />
     <Compile Include="Algorithms\Sorting\QuickSort.cs" />
     <Compile Include="Algorithms\Sorting\SelectionSort.cs" />
+    <Compile Include="DataStructures\BinarySearchTree.cs" />
+    <Compile Include="DataStructures\BinarySearchTreeNode.cs" />
     <Compile Include="DataStructures\Graph.cs" />
     <Compile Include="DataStructures\Heap.cs" />
     <Compile Include="Program.cs" />
