@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AlgoAndDS.Algorithms.Common;
 
-namespace AlgoAndDS
+namespace AlgoAndDS.DataStructures
 {
     class Heap
     {
@@ -12,61 +13,62 @@ namespace AlgoAndDS
         int capacity;
         int currsize;
 
-        private int getParent(int i) => (i - 1) / 2;
-        private int getLeftChild(int i) => 2 * i + 1;
-        private int getRightChild(int i) => 2 * i + 2;
-        private bool withinsize(int i) => i <= currsize;
+        private int GetParent(int i) => (i - 1) / 2;
+        private int GetLeftChild(int i) => 2 * i + 1;
+        private int GetRightChild(int i) => 2 * i + 2;
+        private bool Withinsize(int i) => i <= currsize;
+
         public Heap(int capacity)
         {
             arr = new int[capacity];
             currsize = -1;
         }
-        public void insert(int val)
+        public void Insert(int val)
         {
             arr[++currsize] = val;
-            upheap(currsize);
+            Upheap(currsize);
         }
-        private void upheap(int i)
+        private void Upheap(int i)
         {
             if (i == 0)
             {
                 return;
             }
 
-            if (arr[i] > arr[getParent(i)])
+            if (arr[i] > arr[GetParent(i)])
             {
-                swap(arr, i, getParent(i));
-                upheap(getParent(i));
+                Helper.Swap(arr, i, GetParent(i));
+                Upheap(GetParent(i));
             }
         }
-        private void downheap(int i)
+        private void Downheap(int i)
         {
             int maxchild = 0;
 
-            if (!withinsize(getLeftChild(i)) && !withinsize(getRightChild(i)))
+            if (!Withinsize(GetLeftChild(i)) && !Withinsize(GetRightChild(i)))
             {
                 return;
             }
-            else if (!withinsize(getLeftChild(i)))
+            else if (!Withinsize(GetLeftChild(i)))
             {
-                maxchild = getRightChild(i);
+                maxchild = GetRightChild(i);
             }
-            else if (!withinsize(getRightChild(i)))
+            else if (!Withinsize(GetRightChild(i)))
             {
-                maxchild = getLeftChild(i);
+                maxchild = GetLeftChild(i);
             }
             else
             {
-                maxchild = arr[getLeftChild(i)] > arr[getRightChild(i)] ? getLeftChild(i) : getRightChild(i);
+                maxchild = arr[GetLeftChild(i)] > arr[GetRightChild(i)] ? GetLeftChild(i) : GetRightChild(i);
             }
 
             if (arr[i] < arr[maxchild])
             {
-                swap(arr, i, maxchild);
-                downheap(maxchild);
+                Helper.Swap(arr, i, maxchild);
+                Downheap(maxchild);
             }
         }
-        private int getMin()
+        private int GetMin()
         {
             int val = arr[0];
             return val;
@@ -74,21 +76,14 @@ namespace AlgoAndDS
         private int ExtractMin()
         {
             int val = arr[0];
-            swap(arr, 0, currsize);
-            downheap(0);
+            Helper.Swap(arr, 0, currsize);
+            Downheap(0);
             --currsize;
             return val;
         }
-        public void changePriority(int i, int val)
+        public void ChangePriority(int i, int val)
         {
 
-        }
-
-        public void swap(int[] arr, int i, int j)
-        {
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
         }
     }
 }

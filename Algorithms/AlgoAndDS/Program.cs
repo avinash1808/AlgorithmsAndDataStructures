@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AlgoAndDS.Algorithms.Common;
+using AlgoAndDS.Algorithms.Sorting;
 
 namespace AlgoAndDS
 {
@@ -50,8 +52,8 @@ namespace AlgoAndDS
                 arr[index++] = Convert.ToInt32(str);
             }
 
-            Algorithms.Sorting.SelectionSort.Sort(arr);
-            Algorithms.Sorting.Helper.PrintArray(arr);
+            SelectionSort.Sort(arr);
+            Helper.PrintArray(arr);
             Console.ReadKey();
         }
     }

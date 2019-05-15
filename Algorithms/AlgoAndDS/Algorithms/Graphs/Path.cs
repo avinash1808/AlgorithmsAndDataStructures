@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AlgoAndDS;
+using AlgoAndDS.Algorithms.Common;
+using AlgoAndDS.DataStructures;
 
-namespace Algorithms
+namespace AlgoAndDS.Algorithms.Graphs
 {
     public class Path
     {

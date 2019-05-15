@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AlgoAndDS.Algorithms.Common;
 
-namespace Algorithms.Sorting
+namespace AlgoAndDS.Algorithms.Sorting
 {
     static class SelectionSort
     {
