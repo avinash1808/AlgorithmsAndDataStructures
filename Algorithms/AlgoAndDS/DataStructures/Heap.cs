@@ -9,81 +9,123 @@ namespace AlgoAndDS.DataStructures
 {
     class Heap
     {
-        int[] arr;
+        int[] nodes;
         int capacity;
         int currsize;
 
-        private int GetParent(int i) => (i - 1) / 2;
-        private int GetLeftChild(int i) => 2 * i + 1;
-        private int GetRightChild(int i) => 2 * i + 2;
-        private bool Withinsize(int i) => i <= currsize;
+        private int getParent(int i) => (i - 1) / 2;
+        private int getLeftChild(int i) => 2 * i + 1;
+        private int getRightChild(int i) => 2 * i + 2;
+        private bool withinsize(int i) => i <= currsize;
+        public int GetCapacity() => capacity;
+        public int GetMaxIndex() => currsize;
 
         public Heap(int capacity)
         {
-            arr = new int[capacity];
+            this.capacity = capacity;
+            nodes = new int[capacity];
             currsize = -1;
         }
+
         public void Insert(int val)
         {
-            arr[++currsize] = val;
+            if (this.capacity <= currsize)
+                return;
+            nodes[++currsize] = val;
             Upheap(currsize);
         }
-        private void Upheap(int i)
-        {
-            if (i == 0)
-            {
-                return;
-            }
 
-            if (arr[i] > arr[GetParent(i)])
-            {
-                Helper.Swap(arr, i, GetParent(i));
-                Upheap(GetParent(i));
-            }
+        public int GetMin()
+        {
+            int val = nodes[0];
+            return val;
         }
-        private void Downheap(int i)
-        {
-            int maxchild = 0;
 
-            if (!Withinsize(GetLeftChild(i)) && !Withinsize(GetRightChild(i)))
+        public int ExtractMin()
+        {
+            int val = nodes[0];
+            Helper.Swap(nodes, 0, currsize);
+            --currsize;
+            Downheap(0);
+
+            return val;
+        }
+
+        public void ChangePriority(int i, int val)
+        {
+            if (i < 0) return;
+
+            nodes[i] = val;
+
+            if (nodes[i] > nodes[getParent(i)])
             {
-                return;
-            }
-            else if (!Withinsize(GetLeftChild(i)))
-            {
-                maxchild = GetRightChild(i);
-            }
-            else if (!Withinsize(GetRightChild(i)))
-            {
-                maxchild = GetLeftChild(i);
+                Upheap(i);
             }
             else
             {
-                maxchild = arr[GetLeftChild(i)] > arr[GetRightChild(i)] ? GetLeftChild(i) : GetRightChild(i);
+                Downheap(i);
             }
+        }
 
-            if (arr[i] < arr[maxchild])
-            {
-                Helper.Swap(arr, i, maxchild);
-                Downheap(maxchild);
-            }
-        }
-        private int GetMin()
+        public void Delete(int i)
         {
-            int val = arr[0];
-            return val;
-        }
-        private int ExtractMin()
-        {
-            int val = arr[0];
-            Helper.Swap(arr, 0, currsize);
-            Downheap(0);
+            Helper.Swap(nodes, i, currsize);
             --currsize;
-            return val;
-        }
-        public void ChangePriority(int i, int val)
-        {
 
+            if (nodes[i] > nodes[getParent(i)])
+            {
+                Upheap(i);
+            }
+            else
+            {
+                Downheap(i);
+            }
+        }
+
+        public int GetMaxChildIndex(int i)
+        {
+            if (withinsize(getRightChild(i)))
+            {
+                return nodes[getRightChild(i)] > nodes[getLeftChild(i)] ? getRightChild(i) : getLeftChild(i);
+            }
+            else if (withinsize(getLeftChild(i)))
+            {
+                return getLeftChild(i);
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        private void Upheap(int i)
+        {
+            if (i <= 0)
+            {
+                return;
+            }
+
+            if (nodes[i] > nodes[getParent(i)])
+            {
+                Helper.Swap(nodes, i, getParent(i));
+                Upheap(getParent(i));
+            }
+        }
+
+        private void Downheap(int i)
+        {
+            int maxChild = GetMaxChildIndex(i);
+
+            if (maxChild == -1)
+            {
+                return;
+            }
+
+            if (nodes[maxChild] > nodes[i])
+            {
+                Helper.Swap(nodes, i, maxChild);
+                Downheap(maxChild);
+            }
         }
     }
 }
