@@ -6,30 +6,30 @@ using System.Threading.Tasks;
 
 namespace AlgoAndDS.DataStructures
 {
-    class BinarySearchTree
+    class RedBlackBinarySearchTree
     {
-        private BinarySearchTreeNode root;
+        private RedBlackBinarySearchTreeNode root;
 
-        public BinarySearchTreeNode GetRoot()
+        public RedBlackBinarySearchTreeNode GetRoot()
         {
             return root;
         }
-        public BinarySearchTree()
+        public RedBlackBinarySearchTree()
         {
             root = null;
         }
 
-        public BinarySearchTreeNode Insert(int key, int value)
+        public RedBlackBinarySearchTreeNode Insert(int key, int value)
         {
             root = Insert(root, key, value);
             return root;
         }
 
-        public BinarySearchTreeNode Insert(BinarySearchTreeNode currNode, int key, int value)
+        public RedBlackBinarySearchTreeNode Insert(RedBlackBinarySearchTreeNode currNode, int key, int value)
         {
             if (currNode == null)
             {
-                return new BinarySearchTreeNode(key, value);
+                return new RedBlackBinarySearchTreeNode(key, value, RedBlackBinarySearchTreeNode.Color.Red);
             }
             else if (key.CompareTo(currNode.key) < 0)
             {
@@ -44,6 +44,11 @@ namespace AlgoAndDS.DataStructures
                 currNode.value = value;
             }
             currNode.count = CountOf(currNode.left) + CountOf(currNode.right) + 1;
+
+            if (isRed(currNode.right) && !isRed(currNode.left)) currNode = RotateLeftAt(currNode);
+            if (isRed(currNode.left) && isRed(currNode.left.left)) currNode = RotateRightAt(currNode);
+            if (isRed(currNode.right) && isRed(currNode.left)) Flip(currNode);
+
             return currNode;
         }
 
@@ -52,7 +57,7 @@ namespace AlgoAndDS.DataStructures
             return Get(root, key).value;
         }
 
-        public BinarySearchTreeNode Get(BinarySearchTreeNode currNode, int key)
+        public RedBlackBinarySearchTreeNode Get(RedBlackBinarySearchTreeNode currNode, int key)
         {
             if (currNode == null)
             {
@@ -72,9 +77,42 @@ namespace AlgoAndDS.DataStructures
             }
         }
 
+        public bool isRed(RedBlackBinarySearchTreeNode currNode)
+        {
+            if (currNode == null) return false;
+            return currNode.color == RedBlackBinarySearchTreeNode.Color.Red;
+        }
+
+        public RedBlackBinarySearchTreeNode RotateLeftAt(RedBlackBinarySearchTreeNode currNode)
+        {
+            RedBlackBinarySearchTreeNode rightNode = currNode.right;
+            rightNode.color = currNode.color;
+
+            currNode.right = rightNode.left;
+
+            rightNode.left = currNode;
+            currNode.color = RedBlackBinarySearchTreeNode.Color.Red;
+            return rightNode;
+        }
+
+        public RedBlackBinarySearchTreeNode RotateRightAt(RedBlackBinarySearchTreeNode currNode)
+        {
+            RedBlackBinarySearchTreeNode leftNode = currNode.left;
+            currNode.left = leftNode.right;
+            leftNode.right = currNode;
+            return leftNode;
+        }
+
+        public void Flip(RedBlackBinarySearchTreeNode currNode)
+        {
+            currNode.left.color = RedBlackBinarySearchTreeNode.Color.Black;
+            currNode.right.color = RedBlackBinarySearchTreeNode.Color.Black;
+            currNode.color = RedBlackBinarySearchTreeNode.Color.Red;
+        }
+
         public int Rank(int key)
         {
-            BinarySearchTreeNode currNode = root;
+            RedBlackBinarySearchTreeNode currNode = root;
             int rank = 0;
 
             while (currNode != null)
@@ -109,7 +147,7 @@ namespace AlgoAndDS.DataStructures
             NodesInRange(root, lo, hi);
         }
 
-        public void NodesInRange(BinarySearchTreeNode currNode, int lo, int hi)
+        public void NodesInRange(RedBlackBinarySearchTreeNode currNode, int lo, int hi)
         {
             if (currNode == null) return;
             else if (lo.CompareTo(currNode.key) == 0 || hi.CompareTo(currNode.key) == 0)
@@ -145,11 +183,12 @@ namespace AlgoAndDS.DataStructures
             }
         }
 
-        public BinarySearchTreeNode Floor(int key)
+        public RedBlackBinarySearchTreeNode Floor(int key)
         {
             return Floor(root, key);
         }
-        public BinarySearchTreeNode Floor(BinarySearchTreeNode currNode, int key)
+
+        public RedBlackBinarySearchTreeNode Floor(RedBlackBinarySearchTreeNode currNode, int key)
         {
             if (currNode == null)
                 return null;
@@ -164,14 +203,15 @@ namespace AlgoAndDS.DataStructures
             }
             else
             {
-                BinarySearchTreeNode newNode = Floor(currNode.right, key);
+                RedBlackBinarySearchTreeNode newNode = Floor(currNode.right, key);
                 if (newNode != null)
                     return newNode;
 
                 return currNode;
             }
         }
-        public void InOrder(BinarySearchTreeNode currNode)
+
+        public void InOrder(RedBlackBinarySearchTreeNode currNode)
         {
             if (currNode == null)
                 return;
@@ -182,7 +222,7 @@ namespace AlgoAndDS.DataStructures
             InOrder(currNode.right);
         }
 
-        public void PreOrder(BinarySearchTreeNode currNode)
+        public void PreOrder(RedBlackBinarySearchTreeNode currNode)
         {
             if (currNode == null)
                 return;
@@ -193,7 +233,7 @@ namespace AlgoAndDS.DataStructures
             PreOrder(currNode.right);
         }
 
-        public void PostOrder(BinarySearchTreeNode currNode)
+        public void PostOrder(RedBlackBinarySearchTreeNode currNode)
         {
             if (currNode == null)
                 return;
@@ -204,7 +244,7 @@ namespace AlgoAndDS.DataStructures
             Console.Write(" ");
         }
 
-        public int CountOf(BinarySearchTreeNode currNode)
+        public int CountOf(RedBlackBinarySearchTreeNode currNode)
         {
             if (currNode == null)
                 return 0;

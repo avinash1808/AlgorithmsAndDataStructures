@@ -58,17 +58,17 @@ namespace AlgoAndDS
             //Console.ReadKey();
 
             BinarySearchTree theTree = new BinarySearchTree();
-            theTree.Put(20, 1);
-            theTree.Put(25, 1);
-            theTree.Put(45, 1);
-            theTree.Put(15, 1);
-            theTree.Put(67, 1);
-            theTree.Put(43, 1);
-            theTree.Put(80, 1);
-            theTree.Put(33, 1);
-            theTree.Put(67, 1);
-            theTree.Put(99, 1);
-            theTree.Put(91, 1);
+            theTree.Insert(20, 1);
+            theTree.Insert(25, 1);
+            theTree.Insert(45, 1);
+            theTree.Insert(15, 1);
+            theTree.Insert(67, 1);
+            theTree.Insert(43, 1);
+            theTree.Insert(80, 1);
+            theTree.Insert(33, 1);
+            theTree.Insert(67, 1);
+            theTree.Insert(99, 1);
+            theTree.Insert(91, 1);
             Console.WriteLine("Inorder Traversal : ");
             theTree.InOrder(theTree.GetRoot());
             Console.WriteLine(" ");

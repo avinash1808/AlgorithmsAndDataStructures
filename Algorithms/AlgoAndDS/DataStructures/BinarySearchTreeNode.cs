@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AlgoAndDS.DataStructures
 {
-    class BinarySearchTreeNode
+    class BinarySearchTreeNode : IComparable<BinarySearchTreeNode>
     {
         public int key;
         public int value;
