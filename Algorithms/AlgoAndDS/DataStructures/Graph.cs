@@ -9,12 +9,12 @@ namespace AlgoAndDS.DataStructures
 
         public int GetVertices() => this.vertices;
 
-        public Graph(int v)
+        public Graph(int vertices)
         {
-            this.vertices = v;
+            this.vertices = vertices;
             this.adj = new Dictionary<int, List<int>>();
 
-            for (int i = 0; i < v;++i)
+            for (int i = 0; i < this.vertices;++i)
             {
                 this.adj.Add(i, new List<int>());
             }
@@ -24,9 +24,9 @@ namespace AlgoAndDS.DataStructures
             this.adj[orig].Add(dest);
             this.adj[dest].Add(orig);
         }
-        public IEnumerable<int> GetAdjacentNodes(int o)
+        public IEnumerable<int> GetAdjacentNodes(int v)
         {
-            return this.adj[o];
+            return this.adj[v];
         }
     }
 }

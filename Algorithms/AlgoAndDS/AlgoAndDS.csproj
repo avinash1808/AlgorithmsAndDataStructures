@@ -58,6 +58,10 @@
     <Compile Include="DataStructures\Heap.cs" />
     <Compile Include="DataStructures\RedBlackBinarySearchTree.cs" />
     <Compile Include="DataStructures\RedBlackBinarySearchTreeNode.cs" />
+    <Compile Include="DataStructures\WeightedDirectedEdge.cs" />
+    <Compile Include="DataStructures\WeightedDirectedGraph.cs" />
+    <Compile Include="DataStructures\WeightedUndirectedEdge.cs" />
+    <Compile Include="DataStructures\WeightedUnDirectedGraph.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataStructures\UnionFind.cs" />
