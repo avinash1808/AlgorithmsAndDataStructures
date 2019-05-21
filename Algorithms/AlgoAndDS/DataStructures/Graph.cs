@@ -24,7 +24,7 @@ namespace AlgoAndDS.DataStructures
             this.adj[orig].Add(dest);
             this.adj[dest].Add(orig);
         }
-        public IList<int> GetAdjacentNodes(int o)
+        public IEnumerable<int> GetAdjacentNodes(int o)
         {
             return this.adj[o];
         }

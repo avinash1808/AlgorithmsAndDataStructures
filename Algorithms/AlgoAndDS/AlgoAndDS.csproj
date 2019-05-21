@@ -53,6 +53,7 @@
     <Compile Include="Algorithms\Sorting\SelectionSort.cs" />
     <Compile Include="DataStructures\BinarySearchTree.cs" />
     <Compile Include="DataStructures\BinarySearchTreeNode.cs" />
+    <Compile Include="DataStructures\DirectedGraph.cs" />
     <Compile Include="DataStructures\Graph.cs" />
     <Compile Include="DataStructures\Heap.cs" />
     <Compile Include="DataStructures\RedBlackBinarySearchTree.cs" />
