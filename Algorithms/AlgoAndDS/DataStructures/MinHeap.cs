@@ -28,7 +28,7 @@ namespace AlgoAndDS.DataStructures
         }
 
         public bool isEmpty()
-        {
+        {   
             return currsize == -1;
         }
 

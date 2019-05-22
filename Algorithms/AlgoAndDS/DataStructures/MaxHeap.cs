@@ -7,7 +7,7 @@ using AlgoAndDS.Algorithms.Common;
 
 namespace AlgoAndDS.DataStructures
 {
-    class Heap<T> where T : IComparable<T>
+    class MaxHeap<T> where T : IComparable<T>
     {
         T[] nodes;
         int capacity;
@@ -20,7 +20,7 @@ namespace AlgoAndDS.DataStructures
         public int GetCapacity() => capacity;
         public int GetMaxIndex() => currsize;
 
-        public Heap(int capacity)
+        public MaxHeap(int capacity)
         {
             this.capacity = capacity;
             nodes = new T[capacity];
