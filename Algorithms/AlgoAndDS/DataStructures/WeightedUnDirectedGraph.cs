@@ -11,9 +11,22 @@ namespace AlgoAndDS.DataStructures
     {
         int vertices;
         Dictionary<int, List<WeightedUndirectedEdge>> adj = new Dictionary<int, List<WeightedUndirectedEdge>>();
+
+        public int GetVertices() => this.vertices;
         public WeightedUnDirectedGraph(int vertices)
         {
             this.vertices = vertices;
+        }
+
+        public IEnumerable<int> GetVerticesList()
+        {
+            List<int> verticesList= new List<int>();
+            for (int i = 0; i < vertices; ++i)
+            {
+                verticesList.Add(i);
+            }
+
+            return verticesList;
         }
 
         public void AddEdge(WeightedUndirectedEdge edge)

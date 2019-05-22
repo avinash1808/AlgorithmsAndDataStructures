@@ -57,6 +57,7 @@
     <Compile Include="DataStructures\DirectedGraph.cs" />
     <Compile Include="DataStructures\Graph.cs" />
     <Compile Include="DataStructures\Heap.cs" />
+    <Compile Include="DataStructures\MinHeap.cs" />
     <Compile Include="DataStructures\RedBlackBinarySearchTree.cs" />
     <Compile Include="DataStructures\RedBlackBinarySearchTreeNode.cs" />
     <Compile Include="DataStructures\WeightedDirectedEdge.cs" />

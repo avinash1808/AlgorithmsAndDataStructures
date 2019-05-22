@@ -7,7 +7,7 @@ using AlgoAndDS.Algorithms.Common;
 
 namespace AlgoAndDS.DataStructures
 {
-    class Heap<T> where T : IComparable<T>
+    class MinHeap<T> where T: IComparable<T>
     {
         T[] nodes;
         int capacity;
@@ -20,7 +20,7 @@ namespace AlgoAndDS.DataStructures
         public int GetCapacity() => capacity;
         public int GetMaxIndex() => currsize;
 
-        public Heap(int capacity)
+        public MinHeap(int capacity)
         {
             this.capacity = capacity;
             nodes = new T[capacity];
@@ -40,13 +40,13 @@ namespace AlgoAndDS.DataStructures
             Upheap(currsize);
         }
 
-        public T GetMax()
+        public T GetMin()
         {
             T firstNode = nodes[0];
             return firstNode;
         }
 
-        public T ExtractMax()
+        public T ExtractMin()
         {
             T firstNode = nodes[0];
             Helper.Swap(nodes, 0, currsize);
@@ -62,7 +62,7 @@ namespace AlgoAndDS.DataStructures
 
             nodes[i] = changedNode;
 
-            if (nodes[i].CompareTo(nodes[getParent(i)])>0)
+            if (nodes[i].CompareTo(nodes[getParent(i)]) < 0)
             {
                 Upheap(i);
             }
@@ -77,7 +77,7 @@ namespace AlgoAndDS.DataStructures
             Helper.Swap(nodes, i, currsize);
             --currsize;
 
-            if (nodes[i].CompareTo( nodes[getParent(i)]) > 0)
+            if (nodes[i].CompareTo(nodes[getParent(i)]) < 0)
             {
                 Upheap(i);
             }
@@ -87,11 +87,11 @@ namespace AlgoAndDS.DataStructures
             }
         }
 
-        public int GetMaxChildIndex(int i)
+        public int GetMinChildIndex(int i)
         {
             if (withinsize(getRightChild(i)))
             {
-                return nodes[getRightChild(i)].CompareTo(nodes[getLeftChild(i)]) > 0 ? getRightChild(i) : getLeftChild(i);
+                return nodes[getRightChild(i)].CompareTo(nodes[getLeftChild(i)]) < 0 ? getRightChild(i) : getLeftChild(i);
             }
             else if (withinsize(getLeftChild(i)))
             {
@@ -110,7 +110,7 @@ namespace AlgoAndDS.DataStructures
                 return;
             }
 
-            if (nodes[i].CompareTo(nodes[getParent(i)]) > 0)
+            if (nodes[i].CompareTo(nodes[getParent(i)]) < 0)
             {
                 Helper.Swap(nodes, i, getParent(i));
                 Upheap(getParent(i));
@@ -119,14 +119,14 @@ namespace AlgoAndDS.DataStructures
 
         private void Downheap(int i)
         {
-            int maxChild = GetMaxChildIndex(i);
+            int maxChild = GetMinChildIndex(i);
 
             if (maxChild == -1)
             {
                 return;
             }
 
-            if (nodes[maxChild].CompareTo(nodes[i]) > 0)
+            if (nodes[maxChild].CompareTo(nodes[i]) < 0)
             {
                 Helper.Swap(nodes, i, maxChild);
                 Downheap(maxChild);
