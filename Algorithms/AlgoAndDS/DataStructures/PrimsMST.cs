@@ -5,35 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using AlgoAndDS.DataStructures;
 
-namespace AlgoAndDS.Algorithms.Graphs
+namespace DataStructures.DataStructures
 {
-    class KruskalMST
+    class PrimsMST
     {
         private WeightedUnDirectedGraph G;
         private Queue<WeightedUndirectedEdge> MSTEdges;
         private double TotalWeight;
+        private HashSet<int> Visited;
         private MinHeap<WeightedUndirectedEdge> minHeap;
-        private UnionFind Uf;
 
         public IEnumerable<WeightedUndirectedEdge> Edges() => this.MSTEdges;
         public double GetTotalWeight() => this.TotalWeight;
 
-        public KruskalMST(WeightedUnDirectedGraph g)
+        public PrimsMST(WeightedUnDirectedGraph g)
         {
             this.G = g;
             this.MSTEdges = new Queue<WeightedUndirectedEdge>();
             this.TotalWeight = 0;
 
             minHeap = new MinHeap<WeightedUndirectedEdge>(this.G.GetVertices() * this.G.GetVertices());
-            Uf = new UnionFind(G.GetVertices());
 
-            foreach (var vertex in G.GetVerticesList())
-            {
-                foreach (var edge in G.GetAdjacentEdges(vertex))
-                {
-                    minHeap.Insert(edge);
-                }
-            }
+            var vertex = G.GetVerticesList().ToList().First();
+            this.Visit(vertex);
 
             while (!minHeap.isEmpty())
             {
@@ -41,13 +35,29 @@ namespace AlgoAndDS.Algorithms.Graphs
                 int u = edge.Either();
                 int v = edge.Other(u);
 
-                if (!Uf.Connected(u,v))
+                if (!Visited.Contains(u) || !Visited.Contains(v))
                 {
                     MSTEdges.Enqueue(edge);
                     TotalWeight += edge.Weight();
-                    Uf.Union(u,v);
+                    var newVertex = Visited.Contains(u) ? v : u;
+                    this.Visit(newVertex);
                 }
+
+                if (Visited.Count >= G.GetVertices() - 1)
+                    break;
             }
+        }
+
+        public void Visit(int vertex)
+        {
+            Visited.Add(vertex);
+
+            foreach (var edge in this.G.GetAdjacentEdges(vertex))
+            {
+                if(!Visited.Contains(edge.Other(vertex)))
+                    minHeap.Insert(edge);
+            }
+
         }
     }
 }

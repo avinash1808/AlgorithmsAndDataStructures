@@ -58,6 +58,7 @@
     <Compile Include="DataStructures\Graph.cs" />
     <Compile Include="DataStructures\MaxHeap.cs" />
     <Compile Include="DataStructures\MinHeap.cs" />
+    <Compile Include="DataStructures\PrimsMST.cs" />
     <Compile Include="DataStructures\RedBlackBinarySearchTree.cs" />
     <Compile Include="DataStructures\RedBlackBinarySearchTreeNode.cs" />
     <Compile Include="DataStructures\WeightedDirectedEdge.cs" />
