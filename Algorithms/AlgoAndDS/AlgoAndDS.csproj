@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\Graphs\ConnectedComponents.cs" />
+    <Compile Include="Algorithms\Graphs\KruskalMST.cs" />
     <Compile Include="Algorithms\Graphs\Path.cs" />
     <Compile Include="Algorithms\Sorting\BubbleSort.cs" />
     <Compile Include="Algorithms\Sorting\HeapSort.cs" />
