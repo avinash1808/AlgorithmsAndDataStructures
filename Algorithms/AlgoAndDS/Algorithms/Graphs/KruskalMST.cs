@@ -16,7 +16,7 @@ namespace AlgoAndDS.Algorithms.Graphs
         private UnionFind Uf;
 
         public IEnumerable<WeightedUndirectedEdge> Edges() => this.MSTEdges;
-        public double GetTotalWeight() => this.TotalWeight;
+        public double Weight() => this.TotalWeight;
 
         public KruskalMST(WeightedUnDirectedGraph g)
         {

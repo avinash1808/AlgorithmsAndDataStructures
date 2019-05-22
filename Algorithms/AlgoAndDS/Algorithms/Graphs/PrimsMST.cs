@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AlgoAndDS.DataStructures;
 
-namespace DataStructures.DataStructures
+namespace AlgoAndDS.Algorithms.Graphs
 {
     class PrimsMST
     {
@@ -16,7 +16,7 @@ namespace DataStructures.DataStructures
         private MinHeap<WeightedUndirectedEdge> minHeap;
 
         public IEnumerable<WeightedUndirectedEdge> Edges() => this.MSTEdges;
-        public double GetTotalWeight() => this.TotalWeight;
+        public double Weight() => this.TotalWeight;
 
         public PrimsMST(WeightedUnDirectedGraph g)
         {
