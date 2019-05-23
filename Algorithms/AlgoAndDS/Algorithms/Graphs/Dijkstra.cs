@@ -8,5 +8,6 @@ namespace AlgoAndDS.Algorithms.Graphs
 {
     class Dijkstra
     {
+
     }
 }

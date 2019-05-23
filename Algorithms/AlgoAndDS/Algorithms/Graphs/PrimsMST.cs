@@ -23,7 +23,7 @@ namespace AlgoAndDS.Algorithms.Graphs
             this.G = g;
             this.MSTEdges = new Queue<WeightedUndirectedEdge>();
             this.TotalWeight = 0;
-
+            Visited = new HashSet<int>();
             minHeap = new MinHeap<WeightedUndirectedEdge>(this.G.GetVertices() * this.G.GetVertices());
 
             var vertex = G.GetVerticesList().ToList().First();
@@ -43,7 +43,7 @@ namespace AlgoAndDS.Algorithms.Graphs
                     this.Visit(newVertex);
                 }
 
-                if (Visited.Count >= G.GetVertices() - 1)
+                if (MSTEdges.Count >= G.GetVertices() - 1)
                     break;
             }
         }
@@ -54,7 +54,7 @@ namespace AlgoAndDS.Algorithms.Graphs
 
             foreach (var edge in this.G.GetAdjacentEdges(vertex))
             {
-                if(!Visited.Contains(edge.Other(vertex)))
+                if (!Visited.Contains(edge.Other(vertex)))
                     minHeap.Insert(edge);
             }
 
