@@ -46,20 +46,33 @@ namespace AlgoAndDS
             //Console.WriteLine(" ");
             //theTree.NodesInRange(15,35);
 
-            WeightedUnDirectedGraph G = new WeightedUnDirectedGraph(8);
-            WeightedUndirectedEdge E1 = new WeightedUndirectedEdge(0,1,10);
-            WeightedUndirectedEdge E2 = new WeightedUndirectedEdge(0, 6, 3);
-            WeightedUndirectedEdge E3 = new WeightedUndirectedEdge(6, 1, 9);
-            WeightedUndirectedEdge E4 = new WeightedUndirectedEdge(1, 3, 5);
-            WeightedUndirectedEdge E5 = new WeightedUndirectedEdge(1, 7, 7);
-            WeightedUndirectedEdge E6 = new WeightedUndirectedEdge(7, 3, 6);
-            WeightedUndirectedEdge E7 = new WeightedUndirectedEdge(0, 2, 13);
-            WeightedUndirectedEdge E8 = new WeightedUndirectedEdge(2, 3, 4);
-            WeightedUndirectedEdge E9 = new WeightedUndirectedEdge(0, 5, 7);
-            WeightedUndirectedEdge E10 = new WeightedUndirectedEdge(2, 5, 13);
-            WeightedUndirectedEdge E11 = new WeightedUndirectedEdge(2, 4, 3);
-            WeightedUndirectedEdge E12 = new WeightedUndirectedEdge(5, 4, 20);
-            WeightedUndirectedEdge E13 = new WeightedUndirectedEdge(3, 4, 2);
+            WeightedDirectedGraph G = new WeightedDirectedGraph(8);
+            WeightedDirectedEdge E1 = new WeightedDirectedEdge(0,1,10);
+            WeightedDirectedEdge E2 = new WeightedDirectedEdge(0, 6, 3);
+            WeightedDirectedEdge E3 = new WeightedDirectedEdge(6, 1, 9);
+            WeightedDirectedEdge E4 = new WeightedDirectedEdge(1, 3, 5);
+            WeightedDirectedEdge E5 = new WeightedDirectedEdge(1, 7, 7);
+            WeightedDirectedEdge E6 = new WeightedDirectedEdge(7, 3, 6);
+            WeightedDirectedEdge E7 = new WeightedDirectedEdge(0, 2, 13);
+            WeightedDirectedEdge E8 = new WeightedDirectedEdge(2, 3, 4);
+            WeightedDirectedEdge E9 = new WeightedDirectedEdge(0, 5, 7);
+            WeightedDirectedEdge E10 = new WeightedDirectedEdge(2, 5, 13);
+            WeightedDirectedEdge E11 = new WeightedDirectedEdge(2, 4, 3);
+            WeightedDirectedEdge E12 = new WeightedDirectedEdge(5, 4, 20);
+            WeightedDirectedEdge E13 = new WeightedDirectedEdge(3, 4, 2);
+            WeightedDirectedEdge E21 = new WeightedDirectedEdge(1, 0, 10);
+            WeightedDirectedEdge E22 = new WeightedDirectedEdge(6, 0, 3);
+            WeightedDirectedEdge E23 = new WeightedDirectedEdge(1, 6, 9);
+            WeightedDirectedEdge E24 = new WeightedDirectedEdge(3, 1, 5);
+            WeightedDirectedEdge E25 = new WeightedDirectedEdge(7, 1, 7);
+            WeightedDirectedEdge E26 = new WeightedDirectedEdge(3, 7, 6);
+            WeightedDirectedEdge E27 = new WeightedDirectedEdge(2, 0, 13);
+            WeightedDirectedEdge E28 = new WeightedDirectedEdge(3, 2, 4);
+            WeightedDirectedEdge E29 = new WeightedDirectedEdge(5, 0, 7);
+            WeightedDirectedEdge E30 = new WeightedDirectedEdge(5, 2, 13);
+            WeightedDirectedEdge E31 = new WeightedDirectedEdge(4, 2, 3);
+            WeightedDirectedEdge E32 = new WeightedDirectedEdge(4, 5, 20);
+            WeightedDirectedEdge E33 = new WeightedDirectedEdge(4, 3, 2);
             G.AddEdge(E1);
             G.AddEdge(E2);
             G.AddEdge(E3);
@@ -73,18 +86,18 @@ namespace AlgoAndDS
             G.AddEdge(E11);
             G.AddEdge(E12);
             G.AddEdge(E13);
-            var mstpath = new PrimsMST(G);
-            foreach (var edge in mstpath.Edges())
+            var shortestPath = new Dijkstra(G,0);
+            foreach (var edge in shortestPath.ShortestPathTo(4))
             {
-                var u = edge.Either();
-                var v = edge.Other(u);
+                var u = edge.From();
+                var v = edge.To();
                 Console.Write(u);
                 Console.Write("-");
                 Console.Write(v);
                 Console.Write(" ");
             }
             Console.WriteLine();
-            Console.WriteLine(mstpath.Weight());
+            Console.WriteLine(shortestPath.WeightTo(4));
 
             Console.ReadKey();
         }

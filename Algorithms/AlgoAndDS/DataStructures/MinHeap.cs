@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using AlgoAndDS.Algorithms.Common;
@@ -10,6 +11,7 @@ namespace AlgoAndDS.DataStructures
     class MinHeap<T> where T: IComparable<T>
     {
         T[] nodes;
+        int[] indexOfKey;
         int capacity;
         int currsize;
 
@@ -24,12 +26,25 @@ namespace AlgoAndDS.DataStructures
         {
             this.capacity = capacity;
             nodes = new T[capacity];
+            indexOfKey = new int[capacity];
             currsize = -1;
+
+            for (int i = 0; i < this.capacity; ++i)
+            {
+                indexOfKey[i] = i;
+            }
         }
 
-        public bool isEmpty()
+        public bool IsEmpty()
         {   
             return currsize == -1;
+        }
+
+        public bool Contains(int key)
+        {
+            int index = indexOfKey[key];
+            if (index > currsize || index < 0) return false;
+            else return true;
         }
 
         public void Insert(T nodeToInsert)
@@ -50,14 +65,20 @@ namespace AlgoAndDS.DataStructures
         {
             T firstNode = nodes[0];
             Helper.Swap(nodes, 0, currsize);
+            Helper.Swap(indexOfKey,0,currsize);
+            nodes[currsize] = default(T);
             --currsize;
             Downheap(0);
 
             return firstNode;
         }
 
-        public void ChangePriority(int i, T changedNode)
+        public void ChangePriority(int key, T changedNode)
         {
+            if (!Contains(key)) return;
+
+            int i = indexOfKey[key];
+
             if (i < 0) return;
 
             nodes[i] = changedNode;
@@ -72,10 +93,15 @@ namespace AlgoAndDS.DataStructures
             }
         }
 
-        public void Delete(int i)
+        public void Delete(int key)
         {
+            if (!Contains(key)) return;
+
+            int i = indexOfKey[key];
+
             Helper.Swap(nodes, i, currsize);
-            --currsize;
+            Helper.Swap(indexOfKey, i, currsize);
+             --currsize;
 
             if (nodes[i].CompareTo(nodes[getParent(i)]) < 0)
             {
@@ -113,6 +139,7 @@ namespace AlgoAndDS.DataStructures
             if (nodes[i].CompareTo(nodes[getParent(i)]) < 0)
             {
                 Helper.Swap(nodes, i, getParent(i));
+                Helper.Swap(indexOfKey, i, getParent(i));
                 Upheap(getParent(i));
             }
         }
@@ -129,6 +156,7 @@ namespace AlgoAndDS.DataStructures
             if (nodes[maxChild].CompareTo(nodes[i]) < 0)
             {
                 Helper.Swap(nodes, i, maxChild);
+                Helper.Swap(indexOfKey, i, maxChild);
                 Downheap(maxChild);
             }
         }

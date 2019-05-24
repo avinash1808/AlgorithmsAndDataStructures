@@ -10,6 +10,18 @@ namespace AlgoAndDS.DataStructures
     {
         int vertices;
         Dictionary<int, List<WeightedDirectedEdge>> adj = new Dictionary<int, List<WeightedDirectedEdge>>();
+
+        public int GetVertices() => this.vertices;
+        public IEnumerable<int> GetVerticesList()
+        {
+            List<int> verticesList = new List<int>();
+            for (int i = 0; i < vertices; ++i)
+            {
+                verticesList.Add(i);
+            }
+
+            return verticesList;
+        }
         public WeightedDirectedGraph(int vertices)
         {
             this.vertices = vertices;

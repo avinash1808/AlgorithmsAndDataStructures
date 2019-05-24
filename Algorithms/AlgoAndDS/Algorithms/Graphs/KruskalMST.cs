@@ -35,7 +35,7 @@ namespace AlgoAndDS.Algorithms.Graphs
                 }
             }
 
-            while (!minHeap.isEmpty())
+            while (!minHeap.IsEmpty())
             {
                 WeightedUndirectedEdge edge = minHeap.ExtractMin();
                 int u = edge.Either();

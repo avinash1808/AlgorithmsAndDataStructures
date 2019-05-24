@@ -29,7 +29,7 @@ namespace AlgoAndDS.Algorithms.Graphs
             var vertex = G.GetVerticesList().ToList().First();
             this.Visit(vertex);
 
-            while (!minHeap.isEmpty())
+            while (!minHeap.IsEmpty())
             {
                 WeightedUndirectedEdge edge = minHeap.ExtractMin();
                 int u = edge.Either();
