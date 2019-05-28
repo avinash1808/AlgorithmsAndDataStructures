@@ -62,6 +62,7 @@
     <Compile Include="Algorithms\Graphs\PrimsMST.cs" />
     <Compile Include="DataStructures\RedBlackBinarySearchTree.cs" />
     <Compile Include="DataStructures\RedBlackBinarySearchTreeNode.cs" />
+    <Compile Include="DataStructures\Trie.cs" />
     <Compile Include="DataStructures\WeightedDirectedEdge.cs" />
     <Compile Include="DataStructures\WeightedDirectedGraph.cs" />
     <Compile Include="DataStructures\WeightedUndirectedEdge.cs" />
