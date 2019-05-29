@@ -14,7 +14,7 @@ namespace AlgoAndDS.Algorithms.Common
             arr[i] = arr[j];
             arr[j] = temp;
         }
-        public static void PrintArray(int[] arr)
+        public static void PrintArray<T>(T[] arr)
         {
             for (int i = 0; i < arr.Length; ++i)
             {

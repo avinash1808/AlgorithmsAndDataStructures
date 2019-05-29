@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AlgoAndDS.Algorithms.Common;
 using AlgoAndDS.Algorithms.Graphs;
+using AlgoAndDS.Algorithms.Sorting;
 using AlgoAndDS.DataStructures;
 
 
@@ -50,39 +51,43 @@ namespace AlgoAndDS
             //Console.WriteLine(" ");
             //theTree.NodesInRange(15,35);
 
-            Trie trie = new Trie();
+            RadixSort a = new RadixSort();
+            string[] teststrings = new string[]{"9973","2834","1263","8531", "8530", "7231" };
+            a.LSD(teststrings);
+            Helper.PrintArray(teststrings);
+            //Trie trie = new Trie();
 
-            trie.Insert("actor");
-            trie.Insert("art");
-            trie.Insert("artifact");
-            trie.Insert("cat");
-            trie.Insert("catermelon");
-            trie.Insert("cut");
-            trie.Insert("cute");
-            trie.Insert("cutie");
-            trie.Insert("cutter");
-            trie.Insert("cutting");  
-            trie.Insert("kestle");
-            trie.Insert("kit");
-            trie.Insert("kits");
-            trie.Insert("lit");
-            trie.Insert("omlete");
-            trie.Insert("proposal");          
-            trie.Insert("robot");
-            trie.Insert("sandwitch");           
-            trie.Insert("sublet");
-            trie.Insert("subscript");
-            trie.Insert("substitute");
-            trie.Insert("submenu");
-            trie.Insert("subs");
-            trie.Insert("subtle");            
-            trie.Insert("watermelon");
+            //trie.Insert("actor");
+            //trie.Insert("art");
+            //trie.Insert("artifact");
+            //trie.Insert("cat");
+            //trie.Insert("catermelon");
+            //trie.Insert("cut");
+            //trie.Insert("cute");
+            //trie.Insert("cutie");
+            //trie.Insert("cutter");
+            //trie.Insert("cutting");  
+            //trie.Insert("kestle");
+            //trie.Insert("kit");
+            //trie.Insert("kits");
+            //trie.Insert("lit");
+            //trie.Insert("omlete");
+            //trie.Insert("proposal");          
+            //trie.Insert("robot");
+            //trie.Insert("sandwitch");           
+            //trie.Insert("sublet");
+            //trie.Insert("subscript");
+            //trie.Insert("substitute");
+            //trie.Insert("submenu");
+            //trie.Insert("subs");
+            //trie.Insert("subtle");            
+            //trie.Insert("watermelon");
 
-            Console.WriteLine(trie.Search("cut").ToString());
-            foreach (string str in trie.SearchWild("cute"))
-            {
-                Console.WriteLine(str);
-            }
+            //Console.WriteLine(trie.Search("cut").ToString());
+            //foreach (string str in trie.SearchWild("cute"))
+            //{
+            //    Console.WriteLine(str);
+            //}
             
             Console.ReadKey();
         }
