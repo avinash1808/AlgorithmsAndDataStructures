@@ -11,26 +11,50 @@ namespace AlgoAndDS.Algorithms.Sorting
 {
     class RadixSort
     {
-        public void LSD(string[] strings)
+        public int charAt(string str, int d)
+        {
+            if (d < str.Length) return str[d];
+            return 0;
+        }
+
+        public void MSD(string[] strings)
+        {
+            MSD(strings, 0, 0, strings.Length-1);
+        }
+
+        public void MSD(string[] strings, int d, int lo, int hi, int R = 256)
+        {
+            if (lo >= hi) return;
+
+            string[] aux = new string[strings.Length];
+            int[] count = new int[R + 1];
+            KeyIndexedSort(strings, aux, d, count, lo, hi,R);
+
+            for (int i = 0; i < R; ++i)
+            {
+                MSD(strings,d+1,count[i],count[i+1]-1);
+            }
+
+        }
+
+        public void LSD(string[] strings, int R = 256)
         {
             int w = strings[0].Length;
             List<int> a = new List<int>();
             string[] aux = new string[strings.Length];
-
+            
             for (int i=w-1;i>=0;--i)
             {
-                KeyIndexedSort(strings,aux, i);
+                int[] count = new int[R + 1];
+                KeyIndexedSort(strings,aux, i,count,0,w-1,R);
             }
         }
 
-        public void KeyIndexedSort(string[] arr, string[] aux,int d,int R=256)
-        {
-            int len = arr.Length;
-            char[] count = new char[R+1];            
-            
-            for (int i = 0; i < len; ++i)
+        public void KeyIndexedSort(string[] strs, string[] aux,int d,int[] count,int lo, int hi,int R = 256)
+        {        
+            for (int i = lo; i <= hi; ++i)
             {
-                count[arr[i][d] + 1]++;
+                count[charAt(strs[i],d) + 1]++;
             }
 
             for (int i = 1; i <= R; ++i)
@@ -38,14 +62,14 @@ namespace AlgoAndDS.Algorithms.Sorting
                 count[i] += count[i-1];
             }
 
-            for (int i = 0; i < len; ++i)
+            for (int i = lo; i <= hi; ++i)
             {
-                aux[count[arr[i][d]]++] = arr[i];
+                aux[lo+count[charAt(strs[i], d)]++] = strs[i];
             }
 
-            for (int i = 0; i < len; ++i)
+            for (int i = lo; i <= hi; ++i)
             {
-                arr[i] = aux[i];
+                strs[i] = aux[i];
             }
         }
     }

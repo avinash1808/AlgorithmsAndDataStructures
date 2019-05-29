@@ -52,8 +52,8 @@ namespace AlgoAndDS
             //theTree.NodesInRange(15,35);
 
             RadixSort a = new RadixSort();
-            string[] teststrings = new string[]{"9973","2834","1263","8531", "8530", "7231" };
-            a.LSD(teststrings);
+            string[] teststrings = new string[]{"9973","2834","1263","8531", "8530", "7231","1111","1234", "1112", "1121", "1221", "1311", "1113" };
+            a.MSD(teststrings);
             Helper.PrintArray(teststrings);
             //Trie trie = new Trie();
 
