@@ -12,8 +12,7 @@ using AlgoAndDS.DataStructures;
 
 
 namespace AlgoAndDS
-{
-    
+{  
     class Program
     {
 
@@ -51,10 +50,18 @@ namespace AlgoAndDS
             //Console.WriteLine(" ");
             //theTree.NodesInRange(15,35);
 
-            RadixSort a = new RadixSort();
-            string[] teststrings = new string[]{"9973","2834","1263","8531", "8530", "7231","1111","1234", "1112", "1121", "1221", "1311", "1113" };
-            a.MSD(teststrings);
-            Helper.PrintArray(teststrings);
+            //RadixSort a = new RadixSort();
+            //string[] teststrings = new string[]{"9973","2834","1263","8531", "8530", "7231","1111","1234", "1112", "1121", "1221", "1311", "1113" };
+            //a.MSD(teststrings);
+            //Helper.PrintArray(teststrings);
+            
+            QuickSort3way s1 = new QuickSort3way();
+            int[] arr = new int[] {3, 21, -2, 1, 2, 82, 5, 4, 34, 12, 42, 62, 100, 0, 2, 3, 12, 2, 4, 5, 6, 2, 1, 123, 78, 8, 4, -4, -3};
+            Helper.PrintArray(arr);
+            Console.WriteLine();
+            s1.Sort(arr);
+            Helper.PrintArray(arr);
+
             //Trie trie = new Trie();
 
             //trie.Insert("actor");
@@ -88,7 +95,7 @@ namespace AlgoAndDS
             //{
             //    Console.WriteLine(str);
             //}
-            
+
             Console.ReadKey();
         }
     }
