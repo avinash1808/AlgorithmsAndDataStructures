@@ -15,7 +15,32 @@ namespace AlgoAndDS
 {  
     class Program
     {
+        public int MaxProfit(int[] prices)
+        {
+            int profit=0;
+            int len = prices.Length;
+            bool bot = false;
+            int start = 0;
 
+            for (int i = 0; i < len-1; ++i)
+            {
+                if (!bot && prices[i+1]>prices[i])
+                {
+                    start = prices[i];
+                    bot = true;
+                }
+
+                else if (bot && prices[i + 1] < prices[i])
+                {
+                    profit += prices[i] - start;
+                    bot = false;
+                }
+            }
+            if(bot) profit += prices[len-1] - start;
+
+            return profit;
+        }
+        
         static void Main(string[] args)
         {
             //string input = Console.ReadLine();
@@ -55,15 +80,27 @@ namespace AlgoAndDS
             //a.MSD(teststrings);
             //Helper.PrintArray(teststrings);
             
-            QuickSort3way s1 = new QuickSort3way();
-            int[] arr = new int[] {3, 21, -2, 1, 2, 82, 5, 4, 34, 12, 42, 62, 100, 0, 2, 3, 12, 2, 4, 5, 6, 2, 1, 123, 78, 8, 4, -4, -3};
-            Helper.PrintArray(arr);
-            Console.WriteLine();
-            s1.Sort(arr);
-            Helper.PrintArray(arr);
+            //QuickSort3way s1 = new QuickSort3way();
+            //int[] arr = new int[] {3, 21, -2, 1, 2, 82, 5, 4, 34, 12, 42, 62, 100, 0, 2, 3, 12, 2, 4, 5, 6, 2, 1, 123, 78, 8, 4, -4, -3};
+            //Helper.PrintArray(arr);
+            //Console.WriteLine();
+            //s1.Sort(arr);
+            //Helper.PrintArray(arr);
 
+            DirectedGraph g = new DirectedGraph(5);
+            g.AddEdge(0, 2);
+            g.AddEdge(0, 1);
+            g.AddEdge(1, 4);
+            g.AddEdge(2, 4);
+            g.AddEdge(4, 3);
+            //g.AddEdge(2, 4);
+            TopologicalSort s = new TopologicalSort(g);
+            foreach (var vertex in s.Sort())
+            {
+                Console.Write(vertex);
+                Console.Write(" ");
+            }
             //Trie trie = new Trie();
-
             //trie.Insert("actor");
             //trie.Insert("art");
             //trie.Insert("artifact");
