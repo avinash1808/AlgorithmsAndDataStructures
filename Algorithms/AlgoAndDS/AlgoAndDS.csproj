@@ -56,6 +56,8 @@
     <Compile Include="Algorithms\Sorting\QuickSort3way.cs" />
     <Compile Include="Algorithms\Sorting\RadixSort.cs" />
     <Compile Include="Algorithms\Sorting\SelectionSort.cs" />
+    <Compile Include="Algorithms\Strings\BruteForceSubstringSearch.cs" />
+    <Compile Include="Algorithms\Strings\RabinKarpSubstringSearch.cs" />
     <Compile Include="DataStructures\BinarySearchTree.cs" />
     <Compile Include="DataStructures\BinarySearchTreeNode.cs" />
     <Compile Include="Algorithms\Graphs\Dijkstra.cs" />

@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 using AlgoAndDS.Algorithms.Common;
 using AlgoAndDS.Algorithms.Graphs;
 using AlgoAndDS.Algorithms.Sorting;
+using AlgoAndDS.Algorithms.Strings;
 using AlgoAndDS.DataStructures;
-
 
 namespace AlgoAndDS
 {  
@@ -79,7 +79,7 @@ namespace AlgoAndDS
             //string[] teststrings = new string[]{"9973","2834","1263","8531", "8530", "7231","1111","1234", "1112", "1121", "1221", "1311", "1113" };
             //a.MSD(teststrings);
             //Helper.PrintArray(teststrings);
-            
+
             //QuickSort3way s1 = new QuickSort3way();
             //int[] arr = new int[] {3, 21, -2, 1, 2, 82, 5, 4, 34, 12, 42, 62, 100, 0, 2, 3, 12, 2, 4, 5, 6, 2, 1, 123, 78, 8, 4, -4, -3};
             //Helper.PrintArray(arr);
@@ -87,19 +87,23 @@ namespace AlgoAndDS
             //s1.Sort(arr);
             //Helper.PrintArray(arr);
 
-            DirectedGraph g = new DirectedGraph(5);
-            g.AddEdge(0, 2);
-            g.AddEdge(0, 1);
-            g.AddEdge(1, 4);
-            g.AddEdge(2, 4);
-            g.AddEdge(4, 3);
+            //DirectedGraph g = new DirectedGraph(5);
+            //g.AddEdge(0, 2);
+            //g.AddEdge(0, 1);
+            //g.AddEdge(1, 4);
             //g.AddEdge(2, 4);
-            TopologicalSort s = new TopologicalSort(g);
-            foreach (var vertex in s.Sort())
-            {
-                Console.Write(vertex);
-                Console.Write(" ");
-            }
+            //g.AddEdge(4, 3);
+            ////g.AddEdge(2, 4);
+            //TopologicalSort s = new TopologicalSort(g);
+            //foreach (var vertex in s.Sort())
+            //{
+            //    Console.Write(vertex);
+            //    Console.Write(" ");
+            //}
+
+            RabinKarpSubstringSearch searcher = new RabinKarpSubstringSearch();
+            Console.Write(searcher.Search("findthehaystackinaneedleinahaystackinabarn","needle"));
+
             //Trie trie = new Trie();
             //trie.Insert("actor");
             //trie.Insert("art");
